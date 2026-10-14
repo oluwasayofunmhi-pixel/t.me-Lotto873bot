@@ -1,10 +1,15 @@
+import os
 from telegram import Update
 from telegram.ext import Application, CommandHandler, ContextTypes
 
 # ============================================
-# PASTE YOUR BOT TOKEN HERE (from BotFather)
+# TOKEN is read from Railway environment variable
+# Variable name on Railway must be: BOT_TOKEN
 # ============================================
-TOKEN = "PASTE_YOUR_BOT_TOKEN_HERE"
+TOKEN = os.environ.get("BOT_TOKEN")
+
+if not TOKEN:
+    raise ValueError("BOT_TOKEN is missing. Add it in Railway Variables.")
 
 
 # ============================================
